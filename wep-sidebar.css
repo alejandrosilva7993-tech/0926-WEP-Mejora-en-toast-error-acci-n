@@ -1,0 +1,136 @@
+/* WEP Sidebar — Figma node 1:565 + expanded menu */
+
+:root {
+  --wep-sidebar-width: 72px;
+  --wep-sidebar-icon-size: 36.24px;
+  --wep-sidebar-hover-bg: rgba(255, 255, 255, 0.16);
+}
+
+.wep-sidebar {
+  width: var(--wep-sidebar-width);
+  flex-shrink: 0;
+  background: #00263a;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px 0 12px;
+  min-height: 100%;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.wep-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.wep-sidebar__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--wep-sidebar-icon-size);
+  padding: 0 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.wep-sidebar__item:hover:not(.wep-sidebar__item--active),
+.wep-sidebar__item:focus-visible:not(.wep-sidebar__item--active) {
+  background: var(--wep-sidebar-hover-bg);
+}
+
+.wep-sidebar__item--active {
+  padding: 0;
+  min-height: var(--wep-sidebar-icon-size);
+}
+
+.wep-sidebar__item--active .wep-sidebar__active-bg {
+  display: block;
+  width: 100%;
+  height: var(--wep-sidebar-icon-size);
+}
+
+.wep-sidebar__item--active .wep-sidebar__icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.wep-sidebar__active-bg {
+  display: none;
+}
+
+.wep-sidebar__icon {
+  width: var(--wep-sidebar-icon-size);
+  height: auto;
+  max-height: var(--wep-sidebar-icon-size);
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.wep-sidebar__icon--compact {
+  width: 19.93px;
+  min-width: 19.93px;
+  height: auto;
+  max-height: 15.4px;
+  box-sizing: content-box;
+  padding-inline: calc((var(--wep-sidebar-icon-size) - 19.93px) / 2);
+}
+
+.wep-sidebar__label {
+  display: none;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: #fff;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+.wep-sidebar--expanded .wep-sidebar__item {
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.wep-sidebar--expanded .wep-sidebar__item--active {
+  padding: 0 16px;
+}
+
+.wep-sidebar--expanded .wep-sidebar__item--active .wep-sidebar__active-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.wep-sidebar--expanded .wep-sidebar__item--active .wep-sidebar__icon {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+}
+
+.wep-sidebar--expanded .wep-sidebar__label {
+  display: block;
+}
+
+.wep-sidebar__spacer {
+  flex: 1;
+  min-height: 8px;
+}
